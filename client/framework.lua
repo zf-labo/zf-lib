@@ -18,3 +18,33 @@ end exports('GetCoreObject', GetCoreObject)
 
 local function TriggerCallback()
 end exports('TriggerCallback', TriggerCallback)
+
+local function SpawnVehicle()
+end exports('SpawnVehicle', SpawnVehicle)
+
+local function GetClosestPlayer()
+end exports('GetClosestPlayer', GetClosestPlayer)
+
+local function GetClosestVehicle()
+end exports('GetClosestVehicle', GetClosestVehicle)
+
+local function GetVehicleInDirection()
+end exports('GetVehicleInDirection', GetVehicleInDirection)
+
+local function GetVehicleProperties()
+end exports('GetVehicleProperties', GetVehicleProperties)
+
+local function SetVehicleProperties()
+end exports('SetVehicleProperties', SetVehicleProperties)
+
+local function GetPlayerData()
+    if Framework.RunningFramework == 'qb-core' then
+        return QBCore.Functions.GetPlayerData()
+    end
+end exports('GetPlayerData', GetPlayerData)
+
+local function IsPlayerLoaded()
+end exports('IsPlayerLoaded', IsPlayerLoaded)
+
+local function Notify()
+end exports('Notify', Notify)
