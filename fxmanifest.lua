@@ -19,7 +19,6 @@ files {
 }
 
 shared_script 'modules/init.lua'
-
 shared_scripts {
     '@es_extended/imports.lua',
 
@@ -34,4 +33,5 @@ client_scripts {
 
 server_scripts {
     'modules/**/server.lua',
+    'modules/**/server/*.lua',
 }
