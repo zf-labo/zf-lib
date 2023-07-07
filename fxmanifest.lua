@@ -21,7 +21,6 @@ files {
 shared_script 'modules/init.lua'
 
 shared_scripts {
-    '@ox_lib/init.lua',
     '@es_extended/imports.lua',
 
     'modules/**/shared.lua',
