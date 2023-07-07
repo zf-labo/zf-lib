@@ -94,17 +94,17 @@ function zf.getItemCount(source, item)
     return 0
 end
 
-lib.callback.register('zf:hasItem', function(source, item, amount)
+zf.callback.register('zf:hasItem', function(source, item, amount)
     local hasItem = zf.hasItem(source, item, amount)
     return hasItem
 end)
 
-lib.callback.register('zf:getItemCount', function(source, item)
+zf.callback.register('zf:getItemCount', function(source, item)
     local itemCount = zf.getItemCount(source, item)
     return itemCount
 end)
 
-lib.callback.register('zf:getItemLabel', function(source, itemName)
+zf.callback.register('zf:getItemLabel', function(source, itemName)
     local itemLabel = Core.GetItemLabel(itemName)
     return itemLabel
 end)
