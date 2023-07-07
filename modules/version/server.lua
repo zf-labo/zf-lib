@@ -35,4 +35,4 @@ function zf.checkVersion(repository)
 	end)
 end
 
-zf.checkVersion('zf-versions/zf-lib')
+zf.checkVersion('zf-labo/zf-lib')
