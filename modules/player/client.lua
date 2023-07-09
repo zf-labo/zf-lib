@@ -1,8 +1,8 @@
 function zf.getPlayerData()
     if zf.core == 'qb-core' then
-        return Core.Functions.GetPlayerData()
+        return zf.CoreObject.Functions.GetPlayerData()
     elseif zf.core == 'esx' then
-        return Core.GetPlayerData()
+        return zf.CoreObject.GetPlayerData()
     end
 end
 

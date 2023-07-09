@@ -6,7 +6,7 @@ end
 function zf.getItemLabel(itemName)
     local itemLabel
     if zf.core == 'qb-core' then
-        itemLabel = Core.Shared.Items[itemName].label
+        itemLabel = zf.CoreObject.Shared.Items[itemName].label
     elseif zf.core == 'esx' then
         itemLabel = zf.callback.await('zf:getItemLabel', false, itemName)
     end

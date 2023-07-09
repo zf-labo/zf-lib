@@ -1,16 +1,16 @@
 function zf.getPlayer(source)
     if zf.core == 'qb-core' then
-        return Core.Functions.GetPlayer(source)
+        return zf.CoreObject.Functions.GetPlayer(source)
     elseif zf.core == 'esx' then
-        return Core.GetPlayerFromId(source)
+        return zf.CoreObject.GetPlayerFromId(source)
     end
 end
 
 function zf.getPlayers()
     if zf.core == 'qb-core' then
-        return Core.Functions.GetQBPlayers()
+        return zf.CoreObject.Functions.GetQBPlayers()
     elseif zf.core == 'esx' then
-        return Core.GetPlayers()
+        return zf.CoreObject.GetPlayers()
     end
 end
 
