@@ -23,15 +23,16 @@ shared_scripts {
     '@es_extended/imports.lua',
 
     'modules/**/shared.lua',
-    'locales.lua',
 }
 
 client_scripts {
+    'imports/callbacks/client.lua',
     'modules/**/client.lua',
     'modules/**/client/*.lua'
 }
 
 server_scripts {
+    'imports/callbacks/server.lua',
     'modules/**/server.lua',
     'modules/**/server/*.lua',
 }
