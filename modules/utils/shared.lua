@@ -53,7 +53,7 @@ function zf.getInventoryName()
 end
 
 function zf.getCoreObject()
-    return zf.CoreObject
+    return CoreObject
 end
 
 function zf.getProgressColor(pourcentage, inverted)

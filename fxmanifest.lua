@@ -5,7 +5,7 @@ lua54 'yes'
 
 author 'ZF Labo'
 description 'A library for FiveM developers to make their life easier when using QBCore & ESX.'
-version '1.2.0'
+version '1.3.0'
 
 dependencies {
 	'/server:5848',

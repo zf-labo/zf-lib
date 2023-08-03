@@ -20,13 +20,13 @@ cache = {
 
 if GetResourceState('qb-core') == 'started' then
     zf.core = 'qb-core'
-    zf.CoreObject = exports['qb-core']:GetCoreObject()
+    CoreObject = exports['qb-core']:GetCoreObject()
     RegisterNetEvent('QBCore:Client:UpdateObject', function()
-        zf.CoreObject = exports['qb-core']:GetCoreObject()
+        CoreObject = exports['qb-core']:GetCoreObject()
     end)
 elseif GetResourceState('es_extended') == 'started' then
     zf.core = 'esx'
-    zf.CoreObject = ESX
+    CoreObject = ESX
 end
 
 if GetResourceState('ox_inventory') == 'started' then
