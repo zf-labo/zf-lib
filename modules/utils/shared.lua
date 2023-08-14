@@ -5,6 +5,34 @@ for i = 48, 57 do NumberCharset[#NumberCharset + 1] = string.char(i) end
 for i = 65, 90 do StringCharset[#StringCharset + 1] = string.char(i) end
 for i = 97, 122 do StringCharset[#StringCharset + 1] = string.char(i) end
 
+function zf.log(type, message)
+    local callingResource = GetInvokingResource()
+    local printTypes = {
+        ['success'] = {
+            color = '^2',
+            label = ('%s:SUCCESS'):format(callingResource),
+            printer = function(content) print(content) end,
+        },
+        ['warning'] = {
+            color = '^3',
+            label = ('%s:WARN'):format(callingResource),
+            printer = function(content) print(content) end,
+        },
+        ['error'] = {
+            color = '^1',
+            label = ('%s:ERROR'):format(callingResource),
+            printer = function(content) error(content) end,
+        },
+        ['inform'] = {
+            color = '^5',
+            label = ('%s:INFORM'):format(callingResource),
+            printer = function(content) print(content) end,
+        },
+    }
+    local finalMessage = '[' .. printTypes[type].label .. ']' .. printTypes[type].color .. message .. ' ^0'
+    printTypes[type].printer(finalMessage)
+end
+
 function zf.randomStr(length)
     if length <= 0 then return '' end
     return QBShared.RandomStr(length - 1) .. StringCharset[math.random(1, #StringCharset)]
@@ -53,7 +81,7 @@ function zf.getInventoryName()
 end
 
 function zf.getCoreObject()
-    return zf.CoreObject
+    return CoreObject
 end
 
 function zf.getProgressColor(pourcentage, inverted)
