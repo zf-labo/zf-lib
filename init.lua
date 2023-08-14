@@ -68,7 +68,7 @@ zf = setmetatable({
 	__call = call,
 })
 
-require = zf.require
+requireMod = zf.requireMod
 
 
 

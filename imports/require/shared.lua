@@ -9,12 +9,12 @@ package = {
     path = './?.lua;'
 }
 
-local _require = require
+local _requireMod = requireMod
 
 ---Loads the given module inside the current resource, returning any values returned by the file or `true` when `nil`.
 ---@param modname string
 ---@return unknown?
-function zf.require(modname)
+function zf.requireMod(modname)
     if type(modname) ~= 'string' then return end
 
     local module = loaded[modname]
@@ -24,7 +24,7 @@ function zf.require(modname)
             error(("^1circular-dependency occurred when loading module '%s'^0"):format(modname), 2)
         end
 
-        local success, result = pcall(_require, modname)
+        local success, result = pcall(_requireMod, modname)
 
         if success then
             loaded[modname] = result
@@ -61,4 +61,4 @@ function zf.require(modname)
     return module
 end
 
-return zf.require
+return zf.requireMod
