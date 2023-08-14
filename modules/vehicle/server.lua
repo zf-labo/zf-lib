@@ -13,3 +13,9 @@ function zf.spawnVehicle(source, model, coords, warp)
     while NetworkGetEntityOwner(veh) ~= source do Wait(0) end
     return veh
 end
+
+function zf.getPlate(netId)
+    local vehicle = NetworkGetEntityFromNetworkId(netId)
+    if vehicle == 0 then return end
+    return zf.trim(GetVehicleNumberPlateText(vehicle))
+end
