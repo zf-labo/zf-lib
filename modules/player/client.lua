@@ -1,9 +1,14 @@
 function zf.getPlayerData()
     if zf.core == 'qb-core' then
-        return zf.CoreObject.Functions.GetPlayerData()
+        return CoreObject.Functions.GetPlayerData()
     elseif zf.core == 'esx' then
-        return zf.CoreObject.GetPlayerData()
+        return CoreObject.GetPlayerData()
     end
+end
+
+function zf.getCitizenId()
+    local citizenid = zf.callback.await('zf-lib:getCitizenid', false)
+    return citizenid
 end
 
 function zf.getPlayerJob()
@@ -84,4 +89,14 @@ function zf.getPlayerName()
     elseif zf.core == 'esx' then
         return playerData.name
     end
+end
+
+function zf.getLicences()
+    local licenses = zf.callback.await('zf-lib:getlicences', false)
+    return licenses
+end
+
+function zf.getLicence(licenseType)
+    local license = zf.callback.await('zf-lib:getlicence', false, licenseType)
+    return license
 end

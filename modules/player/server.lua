@@ -1,16 +1,16 @@
 function zf.getPlayer(source)
     if zf.core == 'qb-core' then
-        return zf.CoreObject.Functions.GetPlayer(source)
+        return CoreObject.Functions.GetPlayer(source)
     elseif zf.core == 'esx' then
-        return zf.CoreObject.GetPlayerFromId(source)
+        return CoreObject.GetPlayerFromId(source)
     end
 end
 
 function zf.getPlayers()
     if zf.core == 'qb-core' then
-        return zf.CoreObject.Functions.GetQBPlayers()
+        return CoreObject.Functions.GetQBPlayers()
     elseif zf.core == 'esx' then
-        return zf.CoreObject.GetPlayers()
+        return CoreObject.GetPlayers()
     end
 end
 
@@ -122,3 +122,81 @@ function zf.setMoney(source, moneyType, amount)
         Player.setAccountMoney(moneyType, amount, reason)
     end
 end
+
+function zf.getLicences(source)
+    local Player = zf.getPlayer(source)
+    if zf.core == 'qb-core' then
+        local licences = Player.PlayerData.metadata['licences']
+        return licences or false
+    elseif zf.core == 'esx' then
+        TriggerEvent('esx_license:getLicenses', source, function(licenses)
+            return licences or false
+        end)
+    end
+end
+
+function zf.getLicence(source, licenseType)
+    local Player = zf.getPlayer(source)
+    if zf.core == 'qb-core' then
+        local licences = Player.PlayerData.metadata['licences']
+        return licences[licenseType] or false
+    elseif zf.core == 'esx' then
+        TriggerEvent('esx_license:getLicenses', source, function(licenses)
+            return licences[licenseType] or false
+        end)
+    end
+end
+
+function zf.addLicence(source, licenseType)
+    local Player = zf.getPlayer(source)
+    if zf.core == 'qb-core' then
+        local licences = Player.PlayerData.metadata['licences']
+        licences[licenseType] = true
+        Player.Functions.SetMetaData('licences', licences)
+        return true
+    elseif zf.core == 'esx' then
+        TriggerEvent('esx_license:addLicense', source, licenseType, function()
+            return true
+        end)
+    end
+    return false
+end
+
+function zf.removeLicence(source, licenseType)
+    local Player = zf.getPlayer(source)
+    if zf.core == 'qb-core' then
+        local licences = Player.PlayerData.metadata['licences']
+        licences[licenseType] = false
+        Player.Functions.SetMetaData('licences', licences)
+        return true
+    elseif zf.core == 'esx' then
+        TriggerEvent('esx_license:removeLicense', source, licenseType, function()
+            return true
+        end)
+    end
+    return false
+end
+
+function zf.getCitizenId(source)
+    local Player = zf.getPlayer(source)
+    if zf.core == 'qb-core' then
+        local citizenid = Player.PlayerData.citizenid
+        return citizenid
+    elseif zf.core == 'esx' then
+        local citizenid = Player.license
+        return citizenid
+    end
+    return false
+end
+
+zf.callback.register('zf-lib:getlicences', function(source)
+    return zf.getLicences(source)
+end)
+
+zf.callback.register('zf-lib:getlicence', function(source, licenseType)
+    return zf.getLicence(source, licenseType)
+end)
+
+zf.callback.register('zf-lib:getCitizenid', function(source)
+    return zf.getCitizenId(source)
+end)
