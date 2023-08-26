@@ -19,3 +19,28 @@ function zf.getPlate(netId)
     if vehicle == 0 then return end
     return zf.trim(GetVehicleNumberPlateText(vehicle))
 end
+
+if zf.core == 'esx' then
+    local ESXVehicles = {}
+    CreateThread(function()
+        local vehicles = MySQL.query.await('SELECT * FROM vehicles')
+        for _, vehicle in pairs(vehicles) do
+            ESXVehicles[vehicle.model] = {
+                label = vehicle.name,
+                category = vehicle.category
+            }
+        end
+    end)
+end
+
+function zf.getVehicleLabel(model)
+    if zf.core == 'esx' then
+        return ESXVehicles[model].label
+    else
+        return CoreObject.Shared.Vehicles[model].brand .. ' ' .. CoreObject.Shared.Vehicles[model].name
+    end
+end
+
+zf.callback.register('zf-lib:getVehicleLabel', function(source, model)
+    return zf.getVehicleLabel(model)
+end)

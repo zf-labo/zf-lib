@@ -25,3 +25,8 @@ function zf.getPlate(vehicle)
     if vehicle == 0 then return end
     return zf.trim(GetVehicleNumberPlateText(vehicle))
 end
+
+function zf.getVehicleLabel(model)
+    local label = zf.callback.await('zf-lib:getVehicleLabel', false, model)
+    return label
+end
