@@ -92,7 +92,7 @@ function zf.getPlayerName()
     if zf.core == 'qb-core' then
         return playerData.charinfo.firstname .. ' ' .. playerData.charinfo.lastname
     elseif zf.core == 'esx' then
-        return playerData.name
+        return zf.callback.await('zf-lib:getPlayerName', false)
     end
 end
 
