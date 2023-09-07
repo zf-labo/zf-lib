@@ -189,6 +189,23 @@ function zf.getCitizenId(source)
     return false
 end
 
+function zf.getPlayerName(source)
+    local Player = zf.getPlayer(source)
+    if zf.core == 'qb-core' then
+        local player_name = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
+        return player_name
+    elseif zf.core == 'esx' then
+        local player_name = Player.name
+        return player_name
+    end
+    return false
+end
+
+
+zf.callback.register('zf-lib:getPlayerName', function(source)
+    return zf.getPlayerName(source)
+end)
+
 zf.callback.register('zf-lib:getlicences', function(source)
     return zf.getLicences(source)
 end)
