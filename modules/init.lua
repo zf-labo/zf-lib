@@ -26,7 +26,7 @@ if GetResourceState('qb-core') == 'started' then
     end)
 elseif GetResourceState('es_extended') == 'started' then
     zf.core = 'esx'
-    CoreObject = ESX
+    CoreObject = exports['es_extended']:getSharedObject()
 end
 
 if GetResourceState('ox_inventory') == 'started' then
