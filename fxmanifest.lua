@@ -32,6 +32,7 @@ client_scripts {
 }
 
 server_scripts {
+    '@oxmysql/lib/MySQL.lua',
     'imports/callbacks/server.lua',
     'modules/**/server.lua',
     'modules/**/server/*.lua',
