@@ -11,11 +11,6 @@ function zf.getCitizenId()
     return citizenid
 end
 
-function zf.getCitizenId()
-    local citizenid = zf.callback.await('zf-lib:getCitizenid', false)
-    return citizenid
-end
-
 function zf.getPlayerJob()
     local job = {}
     local playerData = zf.getPlayerData()
